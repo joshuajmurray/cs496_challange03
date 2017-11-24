@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         mNiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                call fragement here
                 mFirstName = (EditText)findViewById(R.id.first_name);
                 names.setLastName(true);
                 mFirstName.setText(names.getLastName());
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mRudeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                call fragment here
                 mFirstName = (EditText)findViewById(R.id.first_name);
                 names.setLastName(false);
                 mFirstName.setText(names.getLastName());
