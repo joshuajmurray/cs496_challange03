@@ -1,5 +1,6 @@
 package com.jmurray.android.challenge03;
 
+import android.databinding.DataBindingUtil;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.jmurray.android.challenge03.databinding.FragmentNiceBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, R.string.no_first_name, Toast.LENGTH_SHORT).show();
                     return;
                 } else {
+                    FragmentNiceBinding binding = DataBindingUtil.setContentView(MainActivity.this, R.layout.fragment_nice);
+                    binding.niceMangled.setText(mFirstName.toString());
+
                     setContentView(R.layout.fragment_nice);
                     FragmentManager manager = getSupportFragmentManager();
                     Fragment fragment = manager.findFragmentById(R.id.nice_fragment);
