@@ -1,5 +1,9 @@
 package com.jmurray.android.challenge03;
 
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
 import java.util.Random;
 
 /**
@@ -10,6 +14,7 @@ public class Names {
     private static String[] mNiceNames;
     private static String[] mRudeNames;
     private String mLastName;
+    private Button mButton;
 
     public Names() {
         mNiceNames = new String[]{"Magnificent", "Awesome", "Special", "Splendid","Majestic"};
@@ -28,6 +33,13 @@ public class Names {
         } else {
             mLastName = mRudeNames[rand.nextInt(mRudeNames.length)];
         }
+    }
+
+
+    public void onResetClick() {
+    }
+
+    public void onMangleClick() {
     }
 
 }
