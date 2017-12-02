@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.jmurray.android.challenge03.databinding.FragmentNiceBinding;
 
 public class NiceFragment extends Fragment {
-    private Names names = new Names();
+    private Names names;
     private Button mResetButton;
     private Button mMangleNice;
     private TextView mNiceMangled;
@@ -29,27 +29,11 @@ public class NiceFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final FragmentNiceBinding binding = DataBindingUtil
-                .inflate(inflater, R.layout.fragment_nice, container, false);
-
-//        mNiceMangled = (TextView) binding.niceFragment.findViewById(R.id.nice_mangled);
-
-//        mMangleNice = (Button) binding.niceFragment.findViewById(R.id.nice_mangled);
-//        mMangleNice.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mNiceMangled.setText("test");
-//            }
-//        });
-//
-//        binding.niceReset.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+        String pass = getArguments().getString("firstName");
+        boolean isNice = 1 == (getArguments().getInt("isNice")) ? true:false;
+        FragmentNiceBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_nice, container, false);
+        binding.setViewModel(new NameViewModel(pass, isNice));
 
         return binding.getRoot();
     }

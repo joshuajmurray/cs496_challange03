@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     private Button mRudeButton;
     private EditText mFirstName;
 
+    Bundle bundle = new Bundle();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +38,16 @@ public class MainActivity extends AppCompatActivity {
                     FragmentNiceBinding binding = DataBindingUtil.setContentView(MainActivity.this, R.layout.fragment_nice);
                     binding.niceMangled.setText(mFirstName.toString());
 
+                    String pass = mFirstName.getText().toString();
+                    bundle.putString("firstName", pass);
+                    bundle.putInt("isNice", 1);
+
                     setContentView(R.layout.fragment_nice);
                     FragmentManager manager = getSupportFragmentManager();
                     Fragment fragment = manager.findFragmentById(R.id.nice_fragment);
 
                     if (fragment == null) {
-                        fragment = createFragment();
+                        fragment.setArguments(bundle);
                         manager.beginTransaction()
                                 .add(R.id.nice_fragment, fragment)
                                 .commit();
@@ -58,12 +64,17 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, R.string.no_first_name, Toast.LENGTH_SHORT).show();
                     return;
                 } else {
+                    String pass = mFirstName.getText().toString();
+                    bundle.putString("firstName", pass);
+                    bundle.putInt("isNice", 0);
+
                     setContentView(R.layout.fragment_rude);
                     FragmentManager manager = getSupportFragmentManager();
                     Fragment fragment = manager.findFragmentById(R.id.rude_fragment);
 
                     if (fragment == null) {
-                        fragment = createFragment();
+                        fragment.setArguments(bundle);
+//                        fragment = createFragment();
                         manager.beginTransaction()
                                 .add(R.id.rude_fragment, fragment)
                                 .commit();
