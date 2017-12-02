@@ -15,59 +15,35 @@
         android:layout_height="match_parent"
         tools:context="com.jmurray.android.challenge03.NiceFragment">
 
-    <android.support.v7.widget.AppCompatImageView
-        android:id="@+id/nice_image"
-        android:layout_width="226dp"
-        android:layout_height="160dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/flower"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/nice_image"
+            android:layout_width="226dp"
+            android:layout_height="160dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/flower"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/nice_mangled"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="first and last name"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nice_image" />
-
-    <Button
-        android:id="@+id/nice_reset"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:text="@string/mangle_reset"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:onClick="@{(view) -> viewModel.lastName}"
-        app:layout_constraintEnd_toStartOf="@+id/nice_remangle"
-        app:layout_constraintHorizontal_bias="0.206"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nice_mangled" />
-
-    <Button
-        android:id="@+id/nice_remangle"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="@string/mangle_remangle"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:onClick="@{(view) -> viewModel.onMangleClick()}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nice_mangled" />
+        <TextView
+            android:id="@+id/nice_mangled"
+            android:layout_width="180dp"
+            android:layout_height="56dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{viewModel.LastName}"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nice_image"
+            app:layout_constraintVertical_bias="0.604" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

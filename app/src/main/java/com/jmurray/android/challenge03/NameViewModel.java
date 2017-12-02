@@ -7,13 +7,15 @@ package com.jmurray.android.challenge03;
 public class NameViewModel {
     private Names mNames;
     private boolean mIsNice;
+    private String mName;
 
     public NameViewModel(String name, boolean isNice) {
         mNames = new Names(name, isNice);
         mIsNice = isNice;
+        mName = name;
     }
 
     public String getLastName() {
-        return "test";
+        return mName + " " + mNames.getLastName(mIsNice);
     }
 }

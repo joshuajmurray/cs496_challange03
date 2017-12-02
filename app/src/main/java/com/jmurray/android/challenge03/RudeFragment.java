@@ -10,20 +10,20 @@ import android.view.ViewGroup;
 import com.jmurray.android.challenge03.databinding.FragmentRudeBinding;
 
 public class RudeFragment extends Fragment {
-    private Names names = new Names();
-    public static RudeFragment newInstance() {
-        return new RudeFragment();
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        FragmentRudeBinding binding = DataBindingUtil
-                .inflate(inflater, R.layout.fragment_rude, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        String pass = getArguments().getString("firstName");
+        boolean isNice = 1 == (getArguments().getInt("isNice")) ? true:false;
+        FragmentRudeBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_rude, container, false);
+        binding.setViewModel(new NameViewModel(pass, isNice));
 
         return binding.getRoot();
     }
-//                    mFirstName = (EditText) findViewById(R.id.first_name);
-//                    names.setLastName(false);
-//                    mFirstName.setText(names.getLastName());
+
 }
