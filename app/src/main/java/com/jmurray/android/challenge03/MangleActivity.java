@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.jmurray.android.challenge03.databinding.FragmentNiceBinding;
+
 public class MangleActivity extends AppCompatActivity {
     private Button mResestButton;
     private Button mReMangle;
@@ -28,13 +30,13 @@ public class MangleActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        String pass = intent.getStringExtra("firstName");
+        String firstName = intent.getStringExtra("firstName");
         boolean isNice = intent.getBooleanExtra("isNice", true);
 
-        final NameViewModel nvm = new NameViewModel(pass, isNice);
+        final NameViewModel nvm = new NameViewModel(firstName, isNice);
 
-        mResestButton = (Button) findViewById(R.id.remangle);
-        mResestButton.setOnClickListener(new View.OnClickListener() {
+        mReMangle = (Button) findViewById(R.id.remangle);
+        mReMangle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {//testing remangle...
                 Toast.makeText(MangleActivity.this, nvm.getLastName(), Toast.LENGTH_SHORT).show();
@@ -46,7 +48,7 @@ public class MangleActivity extends AppCompatActivity {
 
         Bundle bundle = new Bundle();
         if(isNice) {
-            bundle.putString("firstName", pass);
+            bundle.putString("firstName", firstName);
             bundle.putInt("isNice", 1);
 
             if (fragment == null) {
@@ -57,7 +59,7 @@ public class MangleActivity extends AppCompatActivity {
                         .commit();
             }
         } else {
-            bundle.putString("firstName", pass);
+            bundle.putString("firstName", firstName);
             bundle.putInt("isNice", 0);
 
             if (fragment == null) {

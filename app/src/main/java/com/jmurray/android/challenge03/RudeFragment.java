@@ -18,10 +18,8 @@ public class RudeFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        String pass = getArguments().getString("firstName");
-        boolean isNice = 1 == (getArguments().getInt("isNice")) ? true:false;
         FragmentRudeBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_rude, container, false);
-        binding.setViewModel(new NameViewModel(pass, isNice));
+        binding.setViewModel(new NameViewModel(getArguments().getString("firstName"), (1 == (getArguments().getInt("isNice")))));
 
         return binding.getRoot();
     }
