@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jmurray.android.challenge03.databinding.FragmentNiceBinding;
@@ -14,6 +15,8 @@ import com.jmurray.android.challenge03.databinding.FragmentNiceBinding;
 public class MangleActivity extends AppCompatActivity {
     private Button mResestButton;
     private Button mReMangle;
+    private TextView mNiceText;
+    private TextView mRudeText;
 
 
     @Override
@@ -31,15 +34,22 @@ public class MangleActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String firstName = intent.getStringExtra("firstName");
-        boolean isNice = intent.getBooleanExtra("isNice", true);
+        final boolean isNice = intent.getBooleanExtra("isNice", true);
 
         final NameViewModel nvm = new NameViewModel(firstName, isNice);
 
         mReMangle = (Button) findViewById(R.id.remangle);
         mReMangle.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {//testing remangle...
-                Toast.makeText(MangleActivity.this, nvm.getLastName(), Toast.LENGTH_SHORT).show();
+            public void onClick(View view) {
+                String mangledName = nvm.getLastName();
+                if(isNice) {//I don't like setting the textview this way but I'm not sure how else to do it
+                    mNiceText = (TextView) findViewById(R.id.nice_mangled);
+                    mNiceText.setText(mangledName);
+                } else {
+                    mRudeText = (TextView) findViewById(R.id.rude_mangled);
+                    mRudeText.setText(mangledName);
+                }
             }
         });
 
